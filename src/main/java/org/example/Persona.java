@@ -12,18 +12,26 @@ public class Persona {
     private final String gender; //Male, Female
 
     public Persona(String name, int age, String gender){
-        if(name.equals("") || name == null){
-            throw new RuntimeException("Error: nombre de persona no valido");
-        }
+
         this.name = name;
-        if(age<0){
-            throw new RuntimeException("Error: nombre de persona no valido");
-        }
         this.age = age;
-        if(!gender.equals("Male") && !gender.equals("Female")){
-            throw new RuntimeException("Error: nombre de persona no valido");
-        }
         this.gender=gender;
+
+        //comprobacion de que la edad es un numero positivo
+        if(age<0){
+            throw new RuntimeException("Error: Edad no valida");
+        }
+
+        //comprobacion de que los atributos dados son correctos de hombre y mujer
+
+        if(!gender.equals("Male") && !gender.equals("Female")){
+            throw new RuntimeException("Error: Sexo introducido incorrecto");
+        }
+        //comprobamos si el nombre esta null
+        if(name.equals("") || name == null){
+            throw new RuntimeException("Error: Nombre vacio");
+        }
+
     }
     public String name(){
         return name;
@@ -35,32 +43,33 @@ public class Persona {
         return gender;
     }
 
-    public static double[] averageAgePerGender(List<Persona> persons){
-        double[] devolver = new double[2];
-        double hombre=0;
-        double mujer=0;
-        double sumaHombres=0;
-        double sumaMujeres =0;
-        for(Persona p:persons){
+    public static double[] averageAgePerGender(List<Persona> personas){
+        double[] duplaSol = new double[2];
+        double hombre = 0;
+        double mujer = 0;
+        double sumHombres = 0;
+        double sumMujeres = 0;
+
+        for(Persona p:personas){
             if(p.gender.equals("Male")){
-                sumaHombres += p.age;
+                sumHombres += p.age;
                 hombre++;
             }else{
-                sumaMujeres += p.age;
+                sumMujeres += p.age;
                 mujer++;
             }
         }
         if(hombre>0){
-            devolver[0] = sumaHombres/hombre;
+            duplaSol[0] = sumHombres/hombre;
         }else{
-            devolver[0] = 0;
+            duplaSol[0] = 0;
         }
 
         if(mujer>0){
-            devolver[1] = sumaMujeres/mujer;
+            duplaSol[1] = sumMujeres/mujer;
         }else{
-            devolver[1] = 0;
+            duplaSol[1] = 0;
         }
-        return  devolver;
+        return  duplaSol;
     }
 }
