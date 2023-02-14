@@ -8,7 +8,6 @@ Class representing a person with a name, age and gender
 public class Persona {
     private final String name;
     private final int age;
-
     private final String gender; //Male, Female
 
     public Persona(String name, int age, String gender){
@@ -17,13 +16,11 @@ public class Persona {
         this.age = age;
         this.gender=gender;
 
-        //comprobacion de que la edad es un numero positivo
+        //comprueba que edad no sea negativa
         if(age<0){
             throw new RuntimeException("Error: Edad no valida");
         }
-
         //comprobacion de que los atributos dados son correctos de hombre y mujer
-
         if(!gender.equals("Male") && !gender.equals("Female")){
             throw new RuntimeException("Error: Sexo introducido incorrecto");
         }
@@ -31,7 +28,6 @@ public class Persona {
         if(name.equals("") || name == null){
             throw new RuntimeException("Error: Nombre vacio");
         }
-
     }
     public String name(){
         return name;
