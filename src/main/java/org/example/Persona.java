@@ -29,12 +29,15 @@ public class Persona {
             throw new RuntimeException("Error: Nombre vacio");
         }
     }
+
     public String name(){
         return name;
     }
+
     public int age(){
         return age;
     }
+
     public String gender(){
         return gender;
     }
